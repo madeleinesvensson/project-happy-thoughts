@@ -43,6 +43,7 @@ p {
   align-items: center;
   color: lightgrey;
   margin-right: 10px;
+  justify-content: center;
 }
 .like-wrapper {
   color: grey;

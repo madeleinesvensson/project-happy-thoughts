@@ -28,6 +28,32 @@ export const App = () => {
       .then((data) => setThoughts([data, ...thoughts]));
   };
 
+  const postLikedThought = async (id) =>
+    fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((error) => error);
+
+  const onMessageLiked = async (likedMessageId) => {
+    // New updated thought object sent from the API
+    const updatedThought = await postLikedThought(likedMessageId);
+
+    const updatedMessage = thoughts.map((thought) => {
+      if (thought._id === likedMessageId) {
+        // Set the thoughts hearts to the new updated thought hearts from the API
+        thought.hearts = updatedThought.hearts;
+      }
+      return thought;
+    });
+
+    setThoughts(updatedMessage);
+  };
+
   return (
     <div>
       <form onSubmit={onFormSubmit} className="input-card">
@@ -38,8 +64,7 @@ export const App = () => {
           onChange={(e) => setNewThought(e.target.value)}
         />
         <button className="submit-button" type="submit">
-          {" "}
-          ❤️ Send Happy Thought ❤️{" "}
+          ❤️ Send Happy Thought ❤️
         </button>
       </form>
 
@@ -48,8 +73,13 @@ export const App = () => {
           <p>{thought.message}</p>
           <div className="heart-date-aligment">
             <div className="like-wrapper">
-              <button className="card-heart">
-                <span>❤️</span>
+              <button
+                className="card-heart"
+                onClick={() => onMessageLiked(thought._id)}
+              >
+                <span role="img" aria-label="heart emoji">
+                  ❤️
+                </span>
               </button>
               x {thought.hearts}
             </div>
