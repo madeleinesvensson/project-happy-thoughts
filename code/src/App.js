@@ -5,6 +5,7 @@ import { API_URL } from "./utils/urls";
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
   const [newThought, setNewThought] = useState("");
+
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
@@ -29,20 +30,31 @@ export const App = () => {
 
   return (
     <div>
-      <form onSubmit={onFormSubmit}>
-        <label htmlFor="newThought">Type your text</label>
-        <input
+      <form onSubmit={onFormSubmit} className="input-card">
+        <label htmlFor="newThought">What's making you happy right now?</label>
+        <textarea
           type="text"
           value={newThought}
           onChange={(e) => setNewThought(e.target.value)}
         />
-        <button type="submit">Send thought</button>
+        <button className="submit-button" type="submit">
+          {" "}
+          ❤️ Send Happy Thought ❤️{" "}
+        </button>
       </form>
+
       {thoughts.map((thought) => (
-        <div key={thought._id}>
+        <div className="thoughts-card" key={thought._id}>
           <p>{thought.message}</p>
-          <button>{thought.hearts}</button>
-          <p>Created at: {moment(thought.createdAt).fromNow()}</p>
+          <div className="heart-date-aligment">
+            <div className="like-wrapper">
+              <button className="card-heart">
+                <span>❤️</span>
+              </button>
+              x {thought.hearts}
+            </div>
+            <p className="date">{moment(thought.createdAt).fromNow()}</p>
+          </div>
         </div>
       ))}
     </div>
