@@ -1,0 +1,56 @@
+/* THOUGHTS CARDS*/
+.thoughts-card {
+  justify-content: center;
+  max-width: 400px;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: 7px 7px black;
+  margin: 30px;
+  padding: 15px;
+}
+p {
+  margin: 0px;
+}
+.date {
+  font-size: 10px;
+  color: rgb(159, 159, 159);
+}
+.heart-date-aligment {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+.like-button {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background-color: lightgrey;
+  border: none;
+  align-items: center;
+  color: lightgrey;
+  padding: 0px;
+  justify-content: center;
+}
+.like-button-clicked {
+  background-color: #f3b0af;
+}
+
+.like-button span {
+  display: inline-block;
+  font-size: 4em;
+  transform: scale(0.25) translateY(1.5em);
+  margin: -0.7em -0.4em 0;
+}
+
+.like-wrapper {
+  color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.like-p {
+  font-size: 15px;
+  margin-left: 10px;
+}

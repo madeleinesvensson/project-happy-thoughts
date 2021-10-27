@@ -1,4 +1,5 @@
 import React from "react";
+import "./Input.css";
 const Input = ({ onFormSubmit, newThought, setNewThought }) => {
   return (
     <form onSubmit={onFormSubmit} className="input-card">
@@ -13,7 +14,9 @@ const Input = ({ onFormSubmit, newThought, setNewThought }) => {
         type="submit"
         disabled={newThought.length < 5 || newThought.length > 140}
       >
-        ❤️ Send Happy Thought ❤️
+        <span role="img" aria-label="heart emoji">
+          ❤️ Send Happy Thought ❤️
+        </span>
       </button>
     </form>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import "./MessageList.css";
 
 const MessageList = ({ thought, onMessageLiked }) => {
   return (

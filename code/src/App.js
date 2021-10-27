@@ -27,6 +27,7 @@ export const App = () => {
     fetch(API_URL, options)
       .then((res) => res.json())
       .then((data) => setThoughts([data, ...thoughts]));
+    setNewThought("");
   };
 
   const postLikedThought = async (id) =>
@@ -73,4 +74,3 @@ export const App = () => {
     </div>
   );
 };
-// className={thought.hearts > 0 ? "like-button like-button-clicked" : "like-button" }
