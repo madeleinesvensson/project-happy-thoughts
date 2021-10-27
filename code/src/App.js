@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
-import { API_URL } from "./utils/urls";
+import { API_URL, LIKES_URL } from "./utils/urls";
+import Input from "components/Input";
+import MessageList from "components/MessageList";
 
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
@@ -12,7 +13,7 @@ export const App = () => {
       .then((data) => setThoughts(data));
   }, []);
 
-  const onFormSubmit = (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const options = {
@@ -29,7 +30,7 @@ export const App = () => {
   };
 
   const postLikedThought = async (id) =>
-    fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${id}/like`, {
+    fetch(LIKES_URL(id), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,37 +57,20 @@ export const App = () => {
 
   return (
     <div>
-      <form onSubmit={onFormSubmit} className="input-card">
-        <label htmlFor="newThought">What's making you happy right now?</label>
-        <textarea
-          type="text"
-          value={newThought}
-          onChange={(e) => setNewThought(e.target.value)}
-        />
-        <button className="submit-button" type="submit">
-          ❤️ Send Happy Thought ❤️
-        </button>
-      </form>
+      <Input
+        onFormSubmit={handleFormSubmit}
+        newThought={newThought}
+        setNewThought={setNewThought}
+      />
 
       {thoughts.map((thought) => (
-        <div className="thoughts-card" key={thought._id}>
-          <p>{thought.message}</p>
-          <div className="heart-date-aligment">
-            <div className="like-wrapper">
-              <button
-                className="card-heart"
-                onClick={() => onMessageLiked(thought._id)}
-              >
-                <span role="img" aria-label="heart emoji">
-                  ❤️
-                </span>
-              </button>
-              x {thought.hearts}
-            </div>
-            <p className="date">{moment(thought.createdAt).fromNow()}</p>
-          </div>
-        </div>
+        <MessageList
+          key={thought._id}
+          thought={thought}
+          onMessageLiked={onMessageLiked}
+        />
       ))}
     </div>
   );
 };
+// className={thought.hearts > 0 ? "like-button like-button-clicked" : "like-button" }

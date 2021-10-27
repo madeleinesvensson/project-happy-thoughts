@@ -34,7 +34,7 @@ p {
   margin-top: 20px;
   align-items: center;
 }
-.card-heart {
+.like-button {
   border-radius: 50%;
   height: 35px;
   width: 35px;
@@ -42,11 +42,21 @@ p {
   border: none;
   align-items: center;
   color: lightgrey;
-  margin-right: 10px;
+  padding: 0px;
   justify-content: center;
+}
+.like-button-clicked {
+  background-color: darkorchid;
 }
 .like-wrapper {
   color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.like-p {
+  font-size: 15px;
+  margin-left: 10px;
 }
 
 /*INPUT CARD*/
