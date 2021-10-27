@@ -13,23 +13,6 @@ export const App = () => {
       .then((data) => setThoughts(data));
   }, []);
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: newThought }),
-    };
-
-    fetch(API_URL, options)
-      .then((res) => res.json())
-      .then((data) => setThoughts([data, ...thoughts]));
-    setNewThought("");
-  };
-
   const postLikedThought = async (id) =>
     fetch(LIKES_URL(id), {
       method: "POST",
@@ -59,9 +42,10 @@ export const App = () => {
   return (
     <div>
       <Input
-        onFormSubmit={handleFormSubmit}
         newThought={newThought}
         setNewThought={setNewThought}
+        thoughts={thoughts}
+        setThoughts={setThoughts}
       />
 
       {thoughts.map((thought) => (

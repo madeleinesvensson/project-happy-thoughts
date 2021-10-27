@@ -1,14 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { API_URL } from "utils/urls";
 import "./Input.css";
-const Input = ({ onFormSubmit, newThought, setNewThought }) => {
+const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
+  const [count, setCount] = useState(0);
+
+  const setNewThoughtChange = (event) => {
+    setNewThought(event.target.value);
+    setCount(event.target.value.length);
+
+    if (count >= 140) {
+      console.log("make is shorter");
+    }
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: newThought }),
+    };
+
+    fetch(API_URL, options)
+      .then((res) => res.json())
+      .then((data) => setThoughts([data, ...thoughts]));
+    setNewThought("");
+    setCount(0);
+  };
+
   return (
-    <form onSubmit={onFormSubmit} className="input-card">
+    <form onSubmit={handleFormSubmit} className="input-card">
       <label htmlFor="newThought">What's making you happy right now?</label>
-      <textarea
-        type="text"
-        value={newThought}
-        onChange={(e) => setNewThought(e.target.value)}
-      />
+      <textarea type="text" value={newThought} onChange={setNewThoughtChange} />
+      <p className="counter"> {140 - count} out of 140 characters left. </p>
       <button
         className="submit-button"
         type="submit"
