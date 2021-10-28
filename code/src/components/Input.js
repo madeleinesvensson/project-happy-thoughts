@@ -7,10 +7,6 @@ const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
   const setNewThoughtChange = (event) => {
     setNewThought(event.target.value);
     setCount(event.target.value.length);
-
-    if (count >= 140) {
-      console.log("make is shorter");
-    }
   };
 
   const handleFormSubmit = (event) => {
@@ -35,7 +31,10 @@ const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
     <form onSubmit={handleFormSubmit} className="input-card">
       <label htmlFor="newThought">What's making you happy right now?</label>
       <textarea type="text" value={newThought} onChange={setNewThoughtChange} />
-      <p className="counter"> {140 - count} out of 140 characters left. </p>
+      <p className="counter" style={count > 140 ? { color: "red" } : {}}>
+        {140 - count} out of 140 characters left.
+      </p>
+
       <button
         className="submit-button"
         type="submit"

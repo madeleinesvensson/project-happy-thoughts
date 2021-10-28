@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import { API_URL, LIKES_URL } from "./utils/urls";
 import Input from "components/Input";
 import MessageList from "components/MessageList";
+import Loading from "components/Loading";
 
 export const App = () => {
   const [thoughts, setThoughts] = useState([]);
   const [newThought, setNewThought] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(API_URL)
       .then((res) => res.json())
-      .then((data) => setThoughts(data));
+      .then((data) => setThoughts(data))
+      .finally(() => setLoading(false));
   }, []);
 
   const postLikedThought = async (id) =>
@@ -41,6 +45,7 @@ export const App = () => {
 
   return (
     <div>
+      {loading && <Loading />}
       <Input
         newThought={newThought}
         setNewThought={setNewThought}
