@@ -1,13 +1,11 @@
 # Happy Thoughts
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is a website built with React that fetches and displays thoughts from API where you can like them!
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started writing the fetch for the messages and displaying them and then added the textarea so that you can write your own. Using useEffect the page updates with thoughts and likes. I copied the design that Technigo prepaired exactly. If I have more time I would add a nice paragraph under the textarea thta displays the error messages. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://dreamy-pare-2a9171.netlify.app
