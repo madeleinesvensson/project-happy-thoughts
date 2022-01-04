@@ -13,6 +13,32 @@ textarea {
 label {
   font-size: 13px;
 }
+.align-input {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+select {
+  padding: 5px;
+  width: 96%;
+  border-radius: 3px;
+  border-color: gray;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.name-input {
+  width: 90%;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: "Roboto Mono", monospace;
+  height: 15px;
+  font-size: 15px;
+  resize: none;
+}
 .input-card {
   justify-content: center;
   max-width: 400px;
@@ -29,6 +55,10 @@ label {
   border-radius: 25px;
   border: none;
   padding: 8px;
+}
+.center-button {
+  display: flex;
+  justify-content: center;
 }
 
 .counter {
