@@ -30,7 +30,7 @@ export const App = () => {
 
   const onMessageLiked = async (likedMessageId) => {
     // New updated thought object sent from the API
-    const updatedThought = await postLikedThought(likedMessageId);
+    const { response: updatedThought } = await postLikedThought(likedMessageId);
 
     const updatedMessage = thoughts.map((thought) => {
       if (thought._id === likedMessageId) {

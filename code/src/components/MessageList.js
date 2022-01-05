@@ -4,10 +4,16 @@ import "./MessageList.css";
 
 const MessageList = ({ thought, onMessageLiked }) => {
   return (
-    <div className="thoughts-card" key={thought._id}>
-      <p>{thought.message}</p>
-      <p>Thought by: {thought.name}</p>
-      <p>{thought.tags}</p>
+    <div className="thoughts-card">
+      <div className="text-align">
+        <p>{thought.message}</p>
+        <p className="tags">{thought.tags}</p>
+      </div>
+      {thought.name ? (
+        <p className="by">Thought by: {thought.name}</p>
+      ) : (
+        <p className="by">Thought by: Anonymous</p>
+      )}
       <div className="heart-date-aligment">
         <div className="like-wrapper">
           <button

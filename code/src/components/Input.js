@@ -28,9 +28,11 @@ const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
 
     fetch(API_URL, options)
       .then((res) => res.json())
-      .then((data) => setThoughts([data, ...thoughts]));
+      .then(({ response: thought }) => setThoughts([thought, ...thoughts]));
     setNewThought("");
     setCount(0);
+    setTags("");
+    setName("");
   };
 
   const checkKey = (event) => {
@@ -62,7 +64,7 @@ const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
           onChange={(event) => setName(event.target.value)}
         ></input>
         <select value={tags} onChange={(event) => setTags(event.target.value)}>
-          <option hidden>Thought category</option>
+          <option hidden="hidden">Thought category</option>
           <option value="Food thought">Food thought</option>
           <option value="Random thought">Random thought</option>
           <option value="Work thought">Work thought</option>

@@ -9,7 +9,22 @@
   padding: 15px;
 }
 p {
-  margin: 0px;
+  margin: 0px 0px 10px 0px;
+  font-size: 20px;
+}
+
+.by {
+  font-size: 15px;
+}
+.text-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tags {
+  font-size: 10px;
 }
 .date {
   font-size: 10px;
@@ -52,5 +67,5 @@ p {
 }
 .like-p {
   font-size: 15px;
-  margin-left: 10px;
+  margin: 0px 0px 0px 10px;
 }
