@@ -63,13 +63,22 @@ const Input = ({ newThought, setNewThought, setThoughts, thoughts }) => {
           value={name}
           onChange={(event) => setName(event.target.value)}
         ></input>
-        <select value={tags} onChange={(event) => setTags(event.target.value)}>
-          <option hidden="hidden">Thought category</option>
-          <option value="Food thought">Food thought</option>
-          <option value="Random thought">Random thought</option>
-          <option value="Work thought">Work thought</option>
-          <option value="Other thought">Other thought</option>
-        </select>
+        <div className="align-input">
+          <label htmlFor={tags}>Pick a category</label>
+          <select
+            value={tags}
+            onChange={(event) => setTags(event.target.value)}
+          >
+            <option hidden="hidden">Thought category</option>
+            <option value="Food thought">Food thought</option>
+            <option value="Random thought">Random thought</option>
+            <option value="Work thought">Work thought</option>
+            <option value="Idea thought">Idea thought</option>
+            <option value="Christmas thought">Christmas thought</option>
+            <option value="School thought">School thought</option>
+            <option value="Other thought">Other thought</option>
+          </select>
+        </div>
       </div>
       <div className="center-button">
         <button

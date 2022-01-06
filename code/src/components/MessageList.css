@@ -2,9 +2,9 @@
 .thoughts-card {
   justify-content: center;
   max-width: 400px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 2px;
-  box-shadow: 7px 7px black;
+  /* box-shadow: 7px 7px black; */
   margin: 30px;
   padding: 15px;
 }
@@ -24,7 +24,7 @@ p {
 }
 
 .tags {
-  font-size: 10px;
+  font-size: 30px;
 }
 .date {
   font-size: 10px;
